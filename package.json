@@ -1,0 +1,15 @@
+{
+  "name": "okdb-postgresql-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "okdb",
+  "license": "MIT",
+  "dependencies": {
+    "okdb-server": "^1.2.0"
+  }
+}

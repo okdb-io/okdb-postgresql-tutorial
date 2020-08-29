@@ -7,7 +7,7 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "okdb",
+  "author": "okdb.io",
   "license": "MIT",
   "dependencies": {
     "okdb-server": "^1.2.0"

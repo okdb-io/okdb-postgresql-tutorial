@@ -4,23 +4,24 @@ const OkdbServer = require("okdb-server");
 const options = {
     cors: {
         enabled: true
+    },
+    graphql: true, // <==== enable GraphQL server
+    storage: {       
+        graphql: "postgres" // <===== specify data source
+    },   
+    postgres: {
+        host: 'localhost', 
+        port: 5432,
+        database: 'okdb_graphql1',
+        user: 'okdb_user',  
+        password: 'okdb_password'
     }
 }
 const okdb = new OkdbServer(options);
 
-// sample authentication, e.g. should validate your own auth token
-const names = ["Lucas","Charlotte", "Oliver"];
-let nameIdx = 0;
-okdb.handlers().auth((token) => {
-    if(token === "12345") {
-        console.log("auth attempt for ", token, " success");
-        const userName = names[nameIdx];
-        const userId = "1" + nameIdx;
-        nameIdx = (nameIdx + 1) % names.length;
-        return { id: userId, name: userName}
-    }    
-    console.log("auth attempt for ", token, " failed");
-    return null;
+
+okdb.handlers().auth((token) => {    
+    return true; // <===== open access, for demo purposes only. Typically you need to pass and validate your JWT token here.
 });
 
 
